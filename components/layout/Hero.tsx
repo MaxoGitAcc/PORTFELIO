@@ -17,7 +17,7 @@ const Hero = () => {
   }
 
   return (
-    <section id='home' className='relative h-[90vh] w-screen bg-[#0a0c23] overflow-hidden'>
+    <section id='home' className='relative h-[95vh] w-screen bg-[#0a0c23] overflow-hidden'>
 
       {/* Background floating blobs */}
       <div className='absolute inset-0'>
