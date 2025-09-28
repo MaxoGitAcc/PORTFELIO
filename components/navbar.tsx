@@ -1,141 +1,146 @@
-import {
-  Navbar as HeroUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
-  NavbarMenuItem,
-} from "@heroui/navbar";
-import { Button } from "@heroui/button";
-import { Kbd } from "@heroui/kbd";
-import { Link } from "@heroui/link";
-import { Input } from "@heroui/input";
-import { link as linkStyles } from "@heroui/theme";
-import NextLink from "next/link";
-import clsx from "clsx";
+'use client'
 
-import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-  Logo,
-} from "@/components/icons";
+import { AnimatePresence, motion } from 'framer-motion'
+import React, { useState } from 'react'
 
-export const Navbar = () => {
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      classNames={{
-        inputWrapper: "bg-default-100",
-        input: "text-sm",
-      }}
-      endContent={
-        <Kbd className="hidden lg:inline-block" keys={["command"]}>
-          K
-        </Kbd>
-      }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
+// Navigation menu buttons (links)
+const menuButtons = [
+    {
+        name: "Home",
+        onclick: () => { window.location.href = "home" },
+    },
+    {
+        name: "About",
+        onclick: () => { window.location.href = "about" },
+    },
+    {
+        name: "Projects",
+        onclick: () => { window.location.href = "projects" },
+    },
+    {
+        name: "Contact",
+        onclick: () => { window.location.href = "contact" },
+    }
+]
 
-  return (
-    <HeroUINavbar maxWidth="xl" position="sticky">
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Logo />
-            <p className="font-bold text-inherit">ACME</p>
-          </NextLink>
-        </NavbarBrand>
-        <ul className="hidden lg:flex gap-4 justify-start ml-2">
-          {siteConfig.navItems.map((item) => (
-            <NavbarItem key={item.href}>
-              <NextLink
-                className={clsx(
-                  linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium",
+// Social icons with links
+export const socialButtons = [
+    {
+        class: "fa-brands fa-square-github",
+        src: "https://github.com/MaxoGitAcc"
+    },
+    {
+        class: "fa-brands fa-linkedin",
+        src: "https://www.linkedin.com/in/malkhaz-tsotskhalashvili-96a56437b/"
+    },
+    {
+        class: "fa-brands fa-square-twitter",
+        src: "/"
+    }
+]
+
+const Navbar = () => {
+    const [menuShown, setMenuShown] = useState(false);
+
+    // Toggle mobile menu open/close
+    function toggleMenu() {
+        setMenuShown(prev => !prev)
+    }
+
+    return (
+        <footer className="fixed w-screen z-50">
+            <div className="w-[65%] py-2 mx-auto flex items-center justify-between">
+
+
+                {/* Logo */}
+                <div>
+                    <h1 className="font-bold text-2xl">Maxo&apos;s Portfolio</h1>
+                </div>
+
+
+                {/* Desktop Navigation Menu (hidden on smaller screens) */}
+                <div className="flex space-x-[2rem] max-lg:hidden">
+                    {menuButtons.map((content, i) => (
+                        <div key={i} className="text-lg">
+                            <button onClick={content.onclick} className="cursor-pointer">
+                                {content.name}
+                            </button>
+                        </div>
+                    ))}
+                </div>
+
+
+                {/* Desktop Social Links (hidden on smaller screens) */}
+                <div className="flex space-x-[0.3rem] max-lg:hidden">
+                    {socialButtons.map((content, i) => (
+                        <button key={i} className="cursor-pointer text-lg">
+                            <a href={content.src}>
+                                <i className={content.class}></i>
+                            </a>
+                        </button>
+                    ))}
+                </div>
+
+
+
+                {/* Mobile Hamburger Menu (shown on small screens only) */}
+                <div className="min-lg:hidden">
+                    <motion.button onClick={toggleMenu}>
+                        {/* Switch between "bars" and "X" icons depending on state */}
+                        <i className={`fa-solid ${menuShown ? 'fa-xmark' : 'fa-bars'}`}></i>
+                    </motion.button>
+                </div>
+            </div>
+
+
+
+            {/* Mobile Dropdown Menu (animated with Framer Motion) */}
+            <AnimatePresence initial={false}>
+                {menuShown && (
+                    <motion.div
+                        // Start small & slightly offset from the button
+                        initial={{ opacity: 0, scale: 0.5, x: 50, y: -20 }}
+                        // Animate to normal size (slightly bigger for a "pop" effect)
+                        animate={{ opacity: 1, scale: 1.05, x: 0, y: 0 }}
+                        // Exit animation back toward the button
+                        exit={{ opacity: 0, scale: 0.5, x: 50, y: -20 }}
+                        // Spring physics for smooth/bouncy effect
+                        transition={{ type: "spring", stiffness: 200, damping: 18 }}
+                        key="box"
+                        // Position near the hamburger button
+                        className="origin-top-right absolute right-4 top-14"
+                    >
+                        <div className="bg-[#0a0c23] min-lg:hidden rounded-md p-6 flex flex-col space-y-4 items-center justify-center shadow-2xl min-w-[200px]">
+
+                            {/* Mobile Navigation Buttons */}
+                            {menuButtons.map((content, i) => (
+                                <div key={i}>
+                                    <button
+                                        onClick={content.onclick}
+                                        className="text-lg hover:text-blue-400 transition-colors"
+                                    >
+                                        {content.name}
+                                    </button>
+                                </div>
+                            ))}
+
+                            {/* Mobile Social Icons */}
+                            <div className="flex space-x-[0.5rem] mt-2">
+                                {socialButtons.map((content, i) => (
+                                    <button key={i} className="cursor-pointer text-xl">
+                                        <a href={content.src}>
+                                            <i className={content.class}></i>
+                                        </a>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    </motion.div>
                 )}
-                color="foreground"
-                href={item.href}
-              >
-                {item.label}
-              </NextLink>
-            </NavbarItem>
-          ))}
-        </ul>
-      </NavbarContent>
+            </AnimatePresence>
 
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
-        <NavbarItem className="hidden sm:flex gap-2">
-          <Link isExternal aria-label="Twitter" href={siteConfig.links.twitter}>
-            <TwitterIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Discord" href={siteConfig.links.discord}>
-            <DiscordIcon className="text-default-500" />
-          </Link>
-          <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-            <GithubIcon className="text-default-500" />
-          </Link>
-          <ThemeSwitch />
-        </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <Button
-            isExternal
-            as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger" />}
-            variant="flat"
-          >
-            Sponsor
-          </Button>
-        </NavbarItem>
-      </NavbarContent>
+        </footer>
+    )
+}
 
-      <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <Link isExternal aria-label="Github" href={siteConfig.links.github}>
-          <GithubIcon className="text-default-500" />
-        </Link>
-        <ThemeSwitch />
-        <NavbarMenuToggle />
-      </NavbarContent>
-
-      <NavbarMenu>
-        {searchInput}
-        <div className="mx-4 mt-2 flex flex-col gap-2">
-          {siteConfig.navMenuItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                      ? "danger"
-                      : "foreground"
-                }
-                href="#"
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
-          ))}
-        </div>
-      </NavbarMenu>
-    </HeroUINavbar>
-  );
-};
+export default Navbar
