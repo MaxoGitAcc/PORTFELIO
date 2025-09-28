@@ -12,8 +12,8 @@ const Hero = () => {
   }
 
   return (
-    <section id='home' className='h-screen w-screen'>
-      <div className='w-[65%] mx-auto h-screen flex flex-col items-center justify-center'>
+    <section id='home' className='h-[90vh] w-screen'>
+      <div className='w-[65%] mx-auto h-[100vh] flex flex-col items-center justify-center'>
 
 
         <h3 className='text-gray-400 max-md:text-sm'>Hi. I'm Malkhaz Tsotkhalashvili</h3>
@@ -58,7 +58,7 @@ const Hero = () => {
                       <button key={i} 
                       className='border-2 rounded-[100%] p-2 cursor-pointer'
                       style={{border: `0 0 1px #fff, 0 0 2px #eee, 0 0 3px #ddd, 0 0 4px #ccc`}}>
-                        <a href={content.src}>
+                        <a href={content.src} target='_blank'>
                           <i className={`${content.class} size[3rem]`}></i>
                         </a>
                       </button>

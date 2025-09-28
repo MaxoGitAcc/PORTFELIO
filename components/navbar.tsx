@@ -74,7 +74,7 @@ const Navbar = () => {
                 <div className="flex space-x-[0.3rem] max-lg:hidden">
                     {socialButtons.map((content, i) => (
                         <button key={i} className="cursor-pointer text-lg">
-                            <a href={content.src}>
+                            <a href={content.src} target='_blank'>
                                 <i className={content.class}></i>
                             </a>
                         </button>
@@ -128,7 +128,7 @@ const Navbar = () => {
                             <div className="flex space-x-[0.5rem] mt-2">
                                 {socialButtons.map((content, i) => (
                                     <button key={i} className="cursor-pointer text-xl">
-                                        <a href={content.src}>
+                                        <a href={content.src} target='_blank'>
                                             <i className={content.class}></i>
                                         </a>
                                     </button>
