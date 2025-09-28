@@ -1,3 +1,4 @@
+import Contact from "@/components/Contact";
 import Navbar from "@/components/Navbar";
 import "@/styles/globals.css";
 import { Metadata} from "next";
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body className="bg-[#0a0c23] text-white">
         <Navbar />
         {children}
+        <Contact />
       </body>
     </html>
   );
