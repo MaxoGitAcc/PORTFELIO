@@ -15,7 +15,7 @@ const menuButtons = [
 export const socialButtons = [
   { class: "fa-brands fa-square-github", src: "https://github.com/MaxoGitAcc" },
   { class: "fa-brands fa-linkedin", src: "https://www.linkedin.com/in/malkhaz-tsotskhalashvili-96a56437b/" },
-  { class: "fa-brands fa-square-twitter", src: "/" }
+  { class: "fa-solid fa-envelope", src: "mailto:maxowork19@gmail.com" }
 ]
 
 const Navbar = () => {
