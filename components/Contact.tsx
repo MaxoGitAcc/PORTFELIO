@@ -24,7 +24,7 @@ const Contact = () => {
                     whileTap={{ scale: 0.8 }}
                     className='mt-[0.75rem]'
                 >
-                    <button className='border-2 rounded-full py-2 px-5'
+                    <button className='border-2 rounded-full py-2 px-5 cursor-pointer'   
                         style={{ textShadow: `0 0 1px #fff, 0 0 2px #eee, 0 0 2px #ddd` }}
                         onClick={toggleSocials}>
                         Get in Touch

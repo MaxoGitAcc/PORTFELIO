@@ -44,7 +44,7 @@ const Hero = () => {
           whileTap={{ scale: 0.8 }}
           className='mt-4'
         >
-          <button className='border-2 rounded-full py-2 px-5'
+          <button className='border-2 rounded-full py-2 px-5 cursor-pointer'
             style={{ textShadow: `0 0 1px #fff, 0 0 2px #eee, 0 0 2px #ddd` }}
             onClick={toggleSocials}>
             Contact Me
