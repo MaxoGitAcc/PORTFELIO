@@ -2,7 +2,12 @@
 
 import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion' // Framer Motion gestures
-import { socialButtons } from '../Navbar'
+
+export const socialButtons = [
+  { class: "fa-brands fa-square-github", src: "https://github.com/MaxoGitAcc" },
+  { class: "fa-brands fa-linkedin", src: "https://www.linkedin.com/in/malkhaz-tsotskhalashvili-96a56437b/" },
+  { class: "fa-solid fa-envelope", src: "mailto:maxowork19@gmail.com" }
+]
 
 const Hero = () => {
   const [socials, setSocials] = useState(false)

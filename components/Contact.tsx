@@ -2,7 +2,13 @@
 
 import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion' // For animations
-import { socialButtons } from './Navbar' // Import social buttons array
+
+// Social icons with links
+export const socialButtons = [
+    { class: "fa-brands fa-square-github", src: "https://github.com/MaxoGitAcc" },
+    { class: "fa-brands fa-linkedin", src: "https://www.linkedin.com/in/malkhaz-tsotskhalashvili-96a56437b/" },
+    { class: "fa-solid fa-envelope", src: "mailto:maxowork19@gmail.com" }
+  ]
 
 const Contact = () => {
     // State to toggle visibility of social links
