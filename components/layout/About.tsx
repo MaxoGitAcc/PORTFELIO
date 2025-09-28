@@ -29,6 +29,7 @@ const About = () => {
           </p>
         </motion.div>
 
+
         {/* Right Side - Subtle Visual Flair */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

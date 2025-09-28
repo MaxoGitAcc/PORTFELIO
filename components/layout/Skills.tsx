@@ -8,7 +8,7 @@ const skillsArray = [
     { name: 'TypeScript', src: "/skills/Typescript.png" },
     { name: 'React', src: "/skills/react.svg.png" },
     { name: 'Next.js', src: "/skills/next.png" },
-    { name: 'Firebase', src: "/skills/firebase.png" },
+    { name: 'Firebase', src: "/skills/firebase1.png" },
     { name: 'Git', src: "/skills/git.png" }
 ]
 
