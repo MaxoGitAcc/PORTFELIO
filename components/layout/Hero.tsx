@@ -29,9 +29,9 @@ const Hero = () => {
       {/* Main content */}
       <div className='relative w-[65%] mx-auto h-[100vh] flex flex-col items-center justify-center'>
 
-        <h3 className='text-gray-400 max-md:text-sm'>Hi. I'm Malkhaz Tsotkhalashvili</h3>
+        <h3 className='text-gray-400 max-md:text-sm '>Hi. I'm Malkhaz Tsotkhalashvili</h3>
 
-        <h1 className="text-5xl max-md:text-3xl text-center text-white mt-4">
+        <h1 className="text-5xl max-md:text-3xl text-center text-white">
           <span className="text-blue-400">Turning </span>
           <span className='animate-pulse'
             style={{ textShadow: `0 0 1px #fff, 0 0 2px #eee, 0 0 3px #ddd, 0 0 4px #ccc` }}>
