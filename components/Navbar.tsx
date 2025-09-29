@@ -26,7 +26,7 @@ const Navbar = () => {
   }
 
   return (
-    <footer className="fixed w-screen z-50">
+    <footer className="fixed w-screen z-50 bg-[#0a0c23]">
       <div className="w-[65%] py-2 mx-auto flex items-center justify-between">
 
         {/* Logo */}
