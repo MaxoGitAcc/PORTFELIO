@@ -9,22 +9,29 @@ const ProjectsArray = [
     title: "Ecommerce Website",
     description: "A full stack ecommerce website built with React.js. Styled with CSS.",
     src: "/projects/ecommerce.png",
-    biggerDescription: "A full stack ecommerce website built with React.js, Node.js, Express, and MongoDB. Features include product management, and a shopping cart."
+    vidSrc: "/projects/ecommerce.mp4",
+    biggerDescription: `A full stack ecommerce website built with React.js, Node.js, Express, 
+    and MongoDB. Features include product management, and a shopping cart. You can see code for web here: `,
+    Link: ""
+
   },
   {
     title: "Note App",
     description: "A simple note taking app built with Next.js. Styled with Fanta.css & CSS and deployed on Netlify.",
     src: "/projects/noteapp.png",
+    vidSrc: "/projects/NoteApp.mp4",
     biggerDescription: `A simple note taking app built with Next.js. styled with Fanta.css and CSS. deployed on Netlify. Features include adding, editing, and deleting notes.
-    You can see full web here:  `,
-    link: "https://maxosnoteapp.netlify.app/",
-    linkName: "Link"
+    You can see code for web here:  `,
+    link: "https://github.com/MaxoGitAcc/Note-App",
   },
   {
     title: "Copacetic",
     description: "A language learning app built with React.js. Styled with Fanta.css & CSS.",
     src: "/projects/copacetic.png",
-    biggerDescription: `A language learning app built with React.js. styled with Fanta.css and CSS. Features include flashcards, quizzes, and progress tracking.`
+    vidSrc: "/projects/CopaceticVid.mp4",
+    biggerDescription: `A language learning app built with React.js. styled with Fanta.css and CSS. 
+    Features include flashcards, quizzes, and progress tracking. You can se code for web here: `,
+    link: "https://github.com/MaxoGitAcc/COPACETIC"
   }
 ]
 
@@ -46,9 +53,10 @@ const Projects = () => {
         <div className='grid grid-cols-1 md:grid-cols-3 gap-6 mt-12'>
           {ProjectsArray.map((project, i) => (
             <div key={i} className='text-center'>
+              <p className='mb-2'>OPEN IMG TO SEE MORE DETAILS</p>
               <button
                 onClick={() => setSelectedProject(project)}
-                className='border rounded-lg overflow-hidden w-full'
+                className='border rounded-lg overflow-hidden w-full cursor-pointer hover:scale-105 transition-transform duration-200'
               >
                 <img
                   src={project.src}
@@ -96,7 +104,7 @@ const Projects = () => {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-[#0a0c23] rounded-lg shadow-lg max-w-lg w-full p-6 relative"
+              className="bg-[#0a0c23] rounded-lg shadow-lg max-w-lg w-full p-10 relative"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
@@ -110,17 +118,23 @@ const Projects = () => {
               </button>
 
               {/* Image */}
-              <img
-                src={selectedProject.src}
-                alt={selectedProject.title}
+              {/* Video */}
+              <video
+                src={selectedProject.vidSrc}
+                controls
+                autoPlay
+                loop
+                muted
                 className="rounded-md mb-4 w-full object-cover"
               />
 
               {/* Title & Description */}
               <h2 className="text-2xl  font-bold mb-2">{selectedProject.title}</h2>
               <p className="text-gray-600">
-                {selectedProject.biggerDescription} 
-                <a href={selectedProject.link} target='_blank' className='text-white underline'>{selectedProject.linkName}</a>
+                {selectedProject.biggerDescription} <br />
+                <a href={selectedProject.link} target='_blank' className='text-white underline'>
+                  <i className="fa-brands fa-github">GitHub</i>
+                </a>
               </p>
             </motion.div>
           </motion.div>
